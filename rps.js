@@ -18,19 +18,27 @@ function getComputerChoice() {
 //}
 
 function playRound(playerSelection, computerSelection) {
-    // if player is rock and computer is paper OR if player is paper and computer is rock OR if player is scissors and computer is paper 
+    
     
     let player = playerSelection.toUpperCase();
     let computer = computerSelection.toUpperCase();
-    if (player === "ROCK" && computer === "SCISSORS" ||
+    // if player and computer have same choice
+    if (player === computer) {
+        // tie!
+        return "You tied!";
+    }
+    // if player is rock and computer is paper OR if player is paper and computer is rock OR if player is scissors and computer is paper  
+    else if (player === "ROCK" && computer === "SCISSORS" ||
         player === "PAPER" &&  computer === "ROCK" ||
         player === "SCISSORS" && computer === "PAPER") {
-            // player wins
+            // player wins message
             return `You win! ${playerSelection} beats ${computerSelection}!`;
-    } else if (player === "ROCK" && computer === "PAPER" ||
+    }
+    // vice versa logic for player loss
+    else if (player === "ROCK" && computer === "PAPER" ||
             player === "PAPER" &&  computer === "SCISSORS" ||
             player === "SCISSORS" && computer === "ROCK") {
-                // player loses
+                // player loses message
                 return `You lose! ${playerSelection} loses to ${computerSelection}!`;
     }
 }
