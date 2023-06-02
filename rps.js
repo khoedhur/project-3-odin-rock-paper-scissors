@@ -1,44 +1,33 @@
-// This function will return a randomized choice for the "computer" player, either rock, paper or scissors
+/**
+ * Randomly selects rock, paper, or scissors from an array that will be the computer's choice 
+ * @returns {String} The computer's choice which is rock, paper, or scissors
+ */
 function getComputerChoice() {
-    // put the 3 options in an array
     const options = ["rock", "paper", "scissors"];
-    // return a random choice from the array
     let choice = options[Math.floor(Math.random() * options.length)];
     return choice;
 }
 
-//This function will take the user's choice, then compare it to the computer's choice, then determine a winner or tie.
-//function game(playerSelection, computerSelection) {
-    // Ask for user input store it in variable
-    // get computer choice
-    // if player is rock and computer is paper OR if player is paper and computer is rock OR if player is scissors and computer is paper 
-    // player wins
-
-    // else if player is rock and computer is paper OR player is paper and computer is
-//}
-
+/**
+ * Will determine a winner, loser, or tie based on the player's and computer's choice
+ * @param   {String} playerSelection     The choice of the player which is rock, paper, or scissors
+ * @param   {String} computerSelection   The choice of the computer which is rock, paper, or scissors
+ * @returns {String}                     Whether the player wins, loses, or ties to the computer
+ */
 function playRound(playerSelection, computerSelection) {
-    
-    
     let player = playerSelection.toUpperCase();
     let computer = computerSelection.toUpperCase();
-    // if player and computer have same choice
     if (player === computer) {
-        // tie!
         return "You tied!";
     }
-    // if player is rock and computer is paper OR if player is paper and computer is rock OR if player is scissors and computer is paper  
     else if (player === "ROCK" && computer === "SCISSORS" ||
-        player === "PAPER" &&  computer === "ROCK" ||
-        player === "SCISSORS" && computer === "PAPER") {
-            // player wins message
-            return `You win! ${playerSelection} beats ${computerSelection}!`;
+            player === "PAPER" &&  computer === "ROCK" ||
+            player === "SCISSORS" && computer === "PAPER") {
+                return `You win! ${playerSelection} beats ${computerSelection}!`;
     }
-    // vice versa logic for player loss
     else if (player === "ROCK" && computer === "PAPER" ||
             player === "PAPER" &&  computer === "SCISSORS" ||
             player === "SCISSORS" && computer === "ROCK") {
-                // player loses message
                 return `You lose! ${playerSelection} loses to ${computerSelection}!`;
     }
 }
