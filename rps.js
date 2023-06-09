@@ -15,16 +15,19 @@ function getComputerChoice() {
  * @param   {String} computerSelection   The choice of the computer which is rock, paper, or scissors
  * @returns {String}                     Whether the player wins, loses, or ties to the computer
  */
-function playRound(computerSelection) {
+function playRound() {
     console.log("This is rock, paper, scissors game against a computer \n");
     console.log("A winner wll be determined after five rounds.");
-    let computer = computerSelection.toLocaleLowerCase();
+
     // FIX LOGIC ERROR: if there is a tie, the game should re-prompt the user again, and keep playing until there is a winner
     // while the user has not put in a valid input (rock paper scissors)
     // or if the user and computer has tied
     let isTyping = true;
     while (isTyping) {
+        // Get a new computer choice every time
+        let computerSelection = getComputerChoice();
         //keep prompting the user until they enter rock, paper, or scissors
+        let computer = computerSelection.toLocaleLowerCase();
         let playerSelection = prompt("Please type 'rock', 'paper', or 'scissors`");
         //convert to lowercase to cover caps
         let player = playerSelection.toLocaleLowerCase();
@@ -62,7 +65,7 @@ function playRound(computerSelection) {
  */
 function game() {
     for (let i = 0; i < 5; i++) {
-        playRound(getComputerChoice());
+        playRound();
     }   
     return;
 }
