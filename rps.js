@@ -1,14 +1,8 @@
-// TODO: KEEP TRACK OF WHO WINS AFTER 5 ROUNDS (BEST OF 3 TECHNICALLY)
-// TODO: FIX RETURN VALUE OF PLAYROUND() TO A SCORE?
-
-// TODO: CALCULATE WINNER BASED ON NUMBERS OF WINS
-//       if player wins, return 1
-//       if player loses, return -1
-//       variable with final score, should be >= 1 or 
+// TODO: The return of the computer is not updating leading to wrong winner logic
 
 /**
  * Randomly selects rock, paper, or scissors from an array that will be the computer's choice 
- * @returns {String} The computer's choice of either rock, paper, or scissors
+ * @returns {String} The computer's randomly selected choice of either rock, paper, or scissors
  */
 function getComputerChoice() {
     const options = ["rock", "paper", "scissors"];
@@ -18,7 +12,7 @@ function getComputerChoice() {
 
 
 /**
- * This function will prompt the user to input 'rock', 'paper', or 'scissors'
+ * Prompts the user to input 'rock', 'paper', or 'scissors'
  * It will convert it to lowercase
  * If the user did not input a correct option, it will re-prompt the user until they do
  * @returns The player's choice of either rock, paper, scissors
@@ -27,7 +21,7 @@ function getPlayerChoice() {
     let playerChoice;
     let isTyping = true;
     while (isTyping) {
-        playerChoice = prompt("Rock, Paper, or Scissors").toLocaleLowerCase();
+        playerChoice = prompt("Rock, Paper, or Scissors?: ").toLocaleLowerCase();
         if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
             break;
         } else {
@@ -41,25 +35,20 @@ function getPlayerChoice() {
 /**
  * Checks if the player and computer have the same choice
  * if there is a tie, will prompt the user and get a new choice from the computer
- * @param {String} playerSelection 
- * @param {String} computerSelection 
+ * @param {String} playerSelection      The players choice of rock, paper, or scissors
+ * @param {String} computerSelection    The computer's randomly selected choice of rock, paper, or scissors
  * @returns nothing
  */
 function checkTie(playerSelection, computerSelection) {
-    // if tie 
-    // reprompt user and get new computer choice until a valid input
     isTie = true;
     while (isTie) {
-        if (playerSelection !== computerSelection) {   
+        if (playerSelection !== computerSelection) {
+            console.log(`Player picked ${playerSelection}, computer picked ${computerSelection}`);   
             break;
         } else {
-            console.log("Tie! please input again");
+            console.log("Tie! please input again...");
             playerSelection = getPlayerChoice();
             computerSelection = getComputerChoice();
-
-            //DELETE LATER
-            console.log(playerSelection);
-            console.log(computerSelection);
         }
     }
     return;
@@ -67,27 +56,50 @@ function checkTie(playerSelection, computerSelection) {
 
 
 /**
+ * Compares the player versus the computer 
+ * @param {*} playerSelection 
+ * @param {*} computerSelection 
+ * @returns 1 if player won or -1 if computer won
+ */
+function compareChoice(playerSelection, computerSelection) {
+    if (playerSelection === "rock" && computerSelection === "scissors") {
+        console.log("Player won");
+        return 1;
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
+        console.log("Player won");
+        return 1;
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        console.log("Player won");
+        return 1;
+    } else {
+        console.log("Computer won!");
+        return -1;
+    }
+}
+
+
+/**
  * Will determine a winner, loser, or tie based on the player's and computer's choice
  * @param   {String} playerSelection     The choice of the player which is rock, paper, or scissors
- * @param   {String} computerSelection   The choice of the computer which is rock, paper, or scissors
+ * @param   {String} computerSelection   The choice of the computer's randomly selected choice rock, paper, or scissors
  * @returns {String}                     Whether the player wins, loses, or ties to the computer
  */
 function playRound(playerSelection, computerSelection) {
-    // Get player and computer choice
-
-    
     //DELETE LATER
     console.log(playerSelection);
     console.log(computerSelection);
 
-
+    // first check for tie between player and computer
+    // invalid inputs should be handled already
     checkTie(playerSelection, computerSelection);
-    console.log("i am after the tie");
 
-    // player rock vs computer scissors
-    // player paper vs computer rock
-    // player scissors vs computer paper
-    // else computer won 
+    //DELETE LATER
+    console.log(playerSelection);
+    console.log(computerSelection);
+
+    let winner = compareChoice(playerSelection, computerSelection);
+    
+    return winner; 
 }
 
 
@@ -97,14 +109,23 @@ function playRound(playerSelection, computerSelection) {
  */
 function game() {
     // intro Message
-    console.log("This is rock, paper, scissors game against a computer \n");
+    console.log("This is a Rock, Paper, Scissors game against a computer");
     console.log("A winner wll be determined after five rounds.");
-
-   /*  for (let i = 0; i < 5; i++) {
-        playRound();
+    let finalScore = 0;
+    for (let i = 0; i < 5; i++) {
+            finalScore += playRound(getPlayerChoice(), getComputerChoice());
+            console.log(finalScore)
     }   
-    return; */
-    playRound(getPlayerChoice(), getComputerChoice());
+    
+    console.log(`The final score is: ${finalScore}`);
+
+    if (finalScore >= 1) {
+        return console.log("Player is da winner");
+    } else if (finalScore <= -1) {
+        return console.log("Computer is winner");
+    } else {
+        return console.log("something went wrong");
+    }
 }
 
 
