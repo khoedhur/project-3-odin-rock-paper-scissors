@@ -53,11 +53,33 @@ function playRound() {
     console.log(player);
     console.log(computer);
 
-    // compare player and computer choices
-    // tie
-    // player rock vs computer scissors 
+    // if tie 
+    // reprompt user and get new computer choice until a valid input
+    isTie = true;
+    while (isTie) {
+        if (player !== computer) {   
+            break;
+        } else {
+            console.log("Tie! please input again");
+            player = getPlayerChoice();
+            computer = getComputerChoice();
 
-}   
+            //DELETE LATER
+            console.log(player);
+            console.log(computer);
+        }
+    }
+}
+
+
+
+    // player rock vs computer scissors
+    // player paper vs computer rock
+    // player scissors vs computer paper
+    // else computer won 
+
+
+   
 
 
 /**
