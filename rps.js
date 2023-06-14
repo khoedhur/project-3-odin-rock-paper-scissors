@@ -20,7 +20,7 @@ function getComputerChoice() {
 /**
  * This function will prompt the user to input 'rock', 'paper', or 'scissors'
  * It will convert it to lowercase
- * If the user did input a correct option, it will re-prompt the user until they do
+ * If the user did not input a correct option, it will re-prompt the user until they do
  * @returns The player's choice of either rock, paper, scissors
  */
 function getPlayerChoice() {
@@ -39,47 +39,56 @@ function getPlayerChoice() {
 
 
 /**
+ * Checks if the player and computer have the same choice
+ * if there is a tie, will prompt the user and get a new choice from the computer
+ * @param {String} playerSelection 
+ * @param {String} computerSelection 
+ * @returns nothing
+ */
+function checkTie(playerSelection, computerSelection) {
+    // if tie 
+    // reprompt user and get new computer choice until a valid input
+    isTie = true;
+    while (isTie) {
+        if (playerSelection !== computerSelection) {   
+            break;
+        } else {
+            console.log("Tie! please input again");
+            playerSelection = getPlayerChoice();
+            computerSelection = getComputerChoice();
+
+            //DELETE LATER
+            console.log(playerSelection);
+            console.log(computerSelection);
+        }
+    }
+    return;
+}
+
+
+/**
  * Will determine a winner, loser, or tie based on the player's and computer's choice
  * @param   {String} playerSelection     The choice of the player which is rock, paper, or scissors
  * @param   {String} computerSelection   The choice of the computer which is rock, paper, or scissors
  * @returns {String}                     Whether the player wins, loses, or ties to the computer
  */
-function playRound() {
+function playRound(playerSelection, computerSelection) {
     // Get player and computer choice
-    let player = getPlayerChoice();
-    let computer = getComputerChoice();
+
     
     //DELETE LATER
-    console.log(player);
-    console.log(computer);
-
-    // if tie 
-    // reprompt user and get new computer choice until a valid input
-    isTie = true;
-    while (isTie) {
-        if (player !== computer) {   
-            break;
-        } else {
-            console.log("Tie! please input again");
-            player = getPlayerChoice();
-            computer = getComputerChoice();
-
-            //DELETE LATER
-            console.log(player);
-            console.log(computer);
-        }
-    }
-}
+    console.log(playerSelection);
+    console.log(computerSelection);
 
 
+    checkTie(playerSelection, computerSelection);
+    console.log("i am after the tie");
 
     // player rock vs computer scissors
     // player paper vs computer rock
     // player scissors vs computer paper
     // else computer won 
-
-
-   
+}
 
 
 /**
@@ -95,9 +104,8 @@ function game() {
         playRound();
     }   
     return; */
-    playRound();
+    playRound(getPlayerChoice(), getComputerChoice());
 }
-
 
 
 game();
