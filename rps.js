@@ -1,4 +1,8 @@
-// TODO: The return of the computer is not updating leading to wrong winner logic
+/**
+ * This is a console-based rock, paper, scissors game against a computer
+ * Code written by: D
+ */
+
 
 /**
  * Randomly selects rock, paper, or scissors from an array that will be the computer's choice 
@@ -44,14 +48,13 @@ function checkTie(playerSelection, computerSelection) {
     while (isTie) {
         if (playerSelection !== computerSelection) {
             console.log(`Player picked ${playerSelection}, computer picked ${computerSelection}`);   
-            break;
+            return [playerSelection, computerSelection];
         } else {
             console.log("Tie! please input again...");
             playerSelection = getPlayerChoice();
             computerSelection = getComputerChoice();
         }
     }
-    return;
 }
 
 
@@ -93,6 +96,7 @@ function playRound(playerSelection, computerSelection) {
     // invalid inputs should be handled already
     checkTie(playerSelection, computerSelection);
 
+
     //DELETE LATER
     console.log(playerSelection);
     console.log(computerSelection);
@@ -111,14 +115,16 @@ function game() {
     // intro Message
     console.log("This is a Rock, Paper, Scissors game against a computer");
     console.log("A winner wll be determined after five rounds.");
+
+    // Keep running total of winner score
     let finalScore = 0;
     for (let i = 0; i < 5; i++) {
             finalScore += playRound(getPlayerChoice(), getComputerChoice());
             console.log(finalScore)
     }   
     
+    //TODO: Winner should be determined if the number hits 3 or -3 (best 3 of 5)
     console.log(`The final score is: ${finalScore}`);
-
     if (finalScore >= 1) {
         return console.log("Player is da winner");
     } else if (finalScore <= -1) {
