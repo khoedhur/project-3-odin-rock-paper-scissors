@@ -123,15 +123,21 @@ function game() {
     let finalScore = 0;
     for (let i = 0; i < 5; i++) {
             finalScore += playRound(getPlayerChoice(), getComputerChoice());
-            console.log(finalScore)
+            //TODO: Winner should be determined if the number hits 3 or -3 (best 3 of 5)
+            if (finalScore === 3 || finalScore === -3) {
+                console.log(finalScore);
+                console.log("other player has no way of winning");
+                break;
+            }
+            console.log(finalScore);
     }   
     
-    //TODO: Winner should be determined if the number hits 3 or -3 (best 3 of 5)
+    
     console.log(`The final score is: ${finalScore}`);
     if (finalScore >= 1) {
-        return console.log("Player is da winner");
+        return console.log("Player is the winner!");
     } else if (finalScore <= -1) {
-        return console.log("Computer is winner");
+        return console.log("Computer is winner!");
     } else {
         return console.log("something went wrong");
     }
