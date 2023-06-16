@@ -94,14 +94,17 @@ function playRound(playerSelection, computerSelection) {
 
     // first check for tie between player and computer
     // invalid inputs should be handled already
-    checkTie(playerSelection, computerSelection);
+    let finalChoices = checkTie(playerSelection, computerSelection);
 
+    //TODO: EXTRACT (DECONSTRUCT) THE FINAL PLAYER AND COMPUTER VALUES FROM THE CHECKTIE FUNCTION WHICH RETURNS AN ARRAY OF THE UPDATED CHOICES
+    const playerFinal = finalChoices[0];
+    const computerFinal = finalChoices[1];
 
     //DELETE LATER
-    console.log(playerSelection);
-    console.log(computerSelection);
+    console.log(playerFinal);
+    console.log(computerFinal);
 
-    let winner = compareChoice(playerSelection, computerSelection);
+    let winner = compareChoice(playerFinal, computerFinal);
     
     return winner; 
 }
