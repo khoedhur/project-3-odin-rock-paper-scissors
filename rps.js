@@ -1,3 +1,6 @@
+// TODO: CLEAN EVERYTHING UP, DELETE TEST/DEBUG -CONSOLE.LOGS, ADD LOGS FOR FINAL GAME VERSION
+
+
 /**
  * This is a console-based rock, paper, scissors game against a computer
  * Code written by: D
@@ -50,6 +53,7 @@ function checkTie(playerSelection, computerSelection) {
             console.log(`Player picked ${playerSelection}, computer picked ${computerSelection}`);   
             return [playerSelection, computerSelection];
         } else {
+            console.log(`Player picked ${playerSelection}, computer picked ${computerSelection}`);
             console.log("Tie! please input again...");
             playerSelection = getPlayerChoice();
             computerSelection = getComputerChoice();
@@ -82,27 +86,17 @@ function compareChoice(playerSelection, computerSelection) {
 
 
 /**
- * Will determine a winner, loser, or tie based on the player's and computer's choice
+ * Will determine a winner, loser, or tie based on the player's and computer's choice for 1 round
  * @param   {String} playerSelection     The choice of the player which is rock, paper, or scissors
  * @param   {String} computerSelection   The choice of the computer's randomly selected choice rock, paper, or scissors
  * @returns {String}                     Whether the player wins, loses, or ties to the computer
  */
 function playRound(playerSelection, computerSelection) {
-    //DELETE LATER
-    console.log(playerSelection);
-    console.log(computerSelection);
 
-    // first check for tie between player and computer
-    // invalid inputs should be handled already
     let finalChoices = checkTie(playerSelection, computerSelection);
 
-    //TODO: EXTRACT (DECONSTRUCT) THE FINAL PLAYER AND COMPUTER VALUES FROM THE CHECKTIE FUNCTION WHICH RETURNS AN ARRAY OF THE UPDATED CHOICES
     const playerFinal = finalChoices[0];
     const computerFinal = finalChoices[1];
-
-    //DELETE LATER
-    console.log(playerFinal);
-    console.log(computerFinal);
 
     let winner = compareChoice(playerFinal, computerFinal);
     
@@ -111,35 +105,33 @@ function playRound(playerSelection, computerSelection) {
 
 
 /**
- * 
+ * This is the main function that runs the playRound function 5 times and calculates a winner based on the final score
+ * It will stop if wither 
  * @returns Whether the player won or lost the game after 5 rounds
  */
 function game() {
-    // intro Message
+
     console.log("This is a Rock, Paper, Scissors game against a computer");
     console.log("A winner wll be determined after five rounds.");
 
-    // Keep running total of winner score
     let finalScore = 0;
     for (let i = 0; i < 5; i++) {
             finalScore += playRound(getPlayerChoice(), getComputerChoice());
-            //TODO: Winner should be determined if the number hits 3 or -3 (best 3 of 5)
             if (finalScore === 3 || finalScore === -3) {
                 console.log(finalScore);
-                console.log("other player has no way of winning");
+                console.log("other player has no way of winning!");
                 break;
             }
             console.log(finalScore);
     }   
     
-    
     console.log(`The final score is: ${finalScore}`);
     if (finalScore >= 1) {
-        return console.log("Player is the winner!");
+        return console.log("Player wins!");
     } else if (finalScore <= -1) {
-        return console.log("Computer is winner!");
+        return console.log("Computer wins!");
     } else {
-        return console.log("something went wrong");
+        return console.log("Oops! Something went wrong");
     }
 }
 
