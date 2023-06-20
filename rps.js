@@ -1,15 +1,11 @@
-// TODO: CLEAN EVERYTHING UP, DELETE TEST/DEBUG -CONSOLE.LOGS, ADD LOGS FOR FINAL GAME VERSION
-
-
 /**
  * This is a console-based rock, paper, scissors game against a computer
- * Code written by: D
  */
 
 
 /**
  * Randomly selects rock, paper, or scissors from an array that will be the computer's choice 
- * @returns {String} The computer's randomly selected choice of either rock, paper, or scissors
+ * @returns The computer's randomly selected choice of either rock, paper, or scissors
  */
 function getComputerChoice() {
     const options = ["rock", "paper", "scissors"];
@@ -21,7 +17,7 @@ function getComputerChoice() {
 /**
  * Prompts the user to input 'rock', 'paper', or 'scissors'
  * It will convert it to lowercase
- * If the user did not input a correct option, it will re-prompt the user until they do
+ * If the user did not input a valid option, it will re-prompt the user until they do
  * @returns The player's choice of either rock, paper, scissors
  */
 function getPlayerChoice() {
@@ -41,10 +37,10 @@ function getPlayerChoice() {
 
 /**
  * Checks if the player and computer have the same choice
- * if there is a tie, will prompt the user and get a new choice from the computer
+ * if there is a tie, will prompt the user to input again and get a new choice from the computer to compare until the answer is different
  * @param {String} playerSelection      The players choice of rock, paper, or scissors
  * @param {String} computerSelection    The computer's randomly selected choice of rock, paper, or scissors
- * @returns nothing
+ * @returns an array of the final non-tie player and computer choice to be deconstructed in the playRound function
  */
 function checkTie(playerSelection, computerSelection) {
     isTie = true;
@@ -63,10 +59,10 @@ function checkTie(playerSelection, computerSelection) {
 
 
 /**
- * Compares the player versus the computer 
- * @param {*} playerSelection 
- * @param {*} computerSelection 
- * @returns 1 if player won or -1 if computer won
+ * Compares the player and computer's computer choice and determine a winner 
+ * @param {*} playerSelection   Player's choice rock, paper, or scissors
+ * @param {*} computerSelection Computer's choice rock, paper, or scissors
+ * @returns 1 if player won or -1 if computer won (used to keep score which is calculated by the playRound function)
  */
 function compareChoice(playerSelection, computerSelection) {
     if (playerSelection === "rock" && computerSelection === "scissors") {
