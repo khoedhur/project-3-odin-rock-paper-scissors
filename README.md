@@ -8,12 +8,17 @@ This project's goal is to create a console-based rock, paper, scissors game in J
 
 The project main point is to use problem-solving fundamentals and debugging.
 
+## Revisited
+The second part of this project's goal is to practice manipulating the DOM and using Event Listeners.
+
+This updated project will feature a simple UI that allows users to play the game on a webpage rather than the console.
+
 ## Skills Demonstrated
 
 This project showcases the following skills:
 * Problem-solving
     * Planning
-    * Pseudocode 
+    * Pseudocode
     * Divide and Conquer
 * Functions
     * Parameters
@@ -22,5 +27,9 @@ This project showcases the following skills:
 * Comments and Documentation
 * Debugging
     * Javascript Developer Tools
-    
+* Git
+    * git branch
+    * checkout
+    * merge
+    * deleting branches
 
