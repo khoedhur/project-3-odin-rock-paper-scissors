@@ -129,13 +129,23 @@ function game() {
     // Select div from HTML
     const buttons = document.querySelector("#buttons");
 
-    // create rock button and add style
+    // create buttons
     const rockButton = document.createElement('button');
+    const paperButton = document.createElement("button");
+    const scissorsButton = document.createElement("button");
+
+    // style the buttons
     rockButton.textContent = 'Rock';
+
+    paperButton.textContent = 'Paper';
+    scissorsButton.textContent = 'Scissors';
 
 
     // append buttons to parent div
     buttons.appendChild(rockButton);
+    buttons.appendChild(paperButton);
+    buttons.appendChild(scissorsButton);
+
 
     console.log(`The final score is: ${finalScore}`);
     if (finalScore >= 1) {
