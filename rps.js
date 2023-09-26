@@ -96,13 +96,13 @@ function playRound(playerSelection, computerSelection) {
 
     let winner = compareChoice(playerFinal, computerFinal);
     
-    return winner; 
+    return winner;
 }
 
 
 /**
  * This is the main function that runs the playRound function 5 times and calculates a winner based on the final score
- * It will stop if wither 
+ * It will stop if wither
  * @returns Whether the player won or lost the game after 5 rounds
  */
 function game() {
@@ -110,17 +110,33 @@ function game() {
     console.log("This is a Rock, Paper, Scissors game against a computer");
     console.log("A winner wll be determined after five rounds.");
 
-    let finalScore = 0;
-    for (let i = 0; i < 5; i++) {
-            finalScore += playRound(getPlayerChoice(), getComputerChoice());
-            if (finalScore === 3 || finalScore === -3) {
-                console.log(finalScore);
-                console.log("other player has no way of winning!");
-                break;
-            }
-            console.log(finalScore);
-    }   
+
+    // ORIGINAL CODE
+    // let finalScore = 0;
+    // for (let i = 0; i < 5; i++) {
+    //         finalScore += playRound(getPlayerChoice(), getComputerChoice());
+    //         if (finalScore === 3 || finalScore === -3) {
+    //             console.log(finalScore);
+    //             console.log("other player has no way of winning!");
+    //             break;
+    //         }
+    //         console.log(finalScore);
+    // }
     
+
+    // REVISITED CODE USING THE DOM AND EVENT LISTENERS
+
+    // Select div from HTML
+    const buttons = document.querySelector("#buttons");
+
+    // create rock button and add style
+    const rockButton = document.createElement('button');
+    rockButton.textContent = 'Rock';
+
+
+    // append buttons to parent div
+    buttons.appendChild(rockButton);
+
     console.log(`The final score is: ${finalScore}`);
     if (finalScore >= 1) {
         return console.log("Player wins!");
