@@ -1,10 +1,12 @@
 /**
  * This is a console-based rock, paper, scissors game against a computer
+ * The game is a best of 5 (5 rounds possible, stops if the player or computer scores 3 points)
+ * The project's goal is to manipulate the DOM and use Event Listeners to play the game
  */
 
 
 /**
- * Randomly selects rock, paper, or scissors from an array that will be the computer's choice 
+ * Randomly selects rock, paper, or scissors from an array that will be the computer's choice
  * @returns The computer's randomly selected choice of either rock, paper, or scissors
  */
 function getComputerChoice() {
@@ -21,17 +23,16 @@ function getComputerChoice() {
  * @returns The player's choice of either rock, paper, scissors
  */
 function getPlayerChoice() {
-    let playerChoice;
-    let isTyping = true;
-    while (isTyping) {
-        playerChoice = prompt("Rock, Paper, or Scissors?: ").toLocaleLowerCase();
-        if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
-            break;
-        } else {
-            console.log("Invalid input!");
-        }
-    }
-    return playerChoice;
+
+    // let isTyping = true;
+    // while (isTyping) {
+    //     playerChoice = prompt("Rock, Paper, or Scissors?: ").toLocaleLowerCase();
+    //     if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
+    //         break;
+    //     } else {
+    //         console.log("Invalid input!");
+    //     }
+    // }
 }
 
 
@@ -46,8 +47,8 @@ function checkTie(playerSelection, computerSelection) {
     isTie = true;
     while (isTie) {
         if (playerSelection !== computerSelection) {
-            console.log(`Player picked ${playerSelection}, computer picked ${computerSelection}`);   
-            return [playerSelection, computerSelection];
+            console.log(`Player picked ${playerSelection}, computer picked ${computerSelection}`);
+            isTie = false;
         } else {
             console.log(`Player picked ${playerSelection}, computer picked ${computerSelection}`);
             console.log("Tie! please input again...");
@@ -55,23 +56,27 @@ function checkTie(playerSelection, computerSelection) {
             computerSelection = getComputerChoice();
         }
     }
+    return [playerSelection, computerSelection];
 }
 
 
 /**
- * Compares the player and computer's computer choice and determine a winner 
+ * Compares the player and computer's computer choice and determine a winner
  * @param {*} playerSelection   Player's choice rock, paper, or scissors
  * @param {*} computerSelection Computer's choice rock, paper, or scissors
  * @returns 1 if player won or -1 if computer won (used to keep score which is calculated by the playRound function)
  */
 function compareChoice(playerSelection, computerSelection) {
-    if (playerSelection === "rock" && computerSelection === "scissors") {
+    let player = playerSelection.toUpperCase();
+    let computer = compareChoice.toUpperCase();
+
+    if (player === "ROCK" && computer === "SCISSORS") {
         console.log("Player won");
         return 1;
-    } else if (playerSelection === "paper" && computerSelection === "rock") {
+    } else if (player === "PAPER" && computer === "ROCK") {
         console.log("Player won");
         return 1;
-    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+    } else if (player === "SCISSORS" && computer === "PAPER") {
         console.log("Player won");
         return 1;
     } else {
@@ -107,11 +112,20 @@ function playRound(playerSelection, computerSelection) {
  */
 function game() {
 
-    console.log("This is a Rock, Paper, Scissors game against a computer");
-    console.log("A winner wll be determined after five rounds.");
+    alert("This is a Rock, Paper, Scissors game against a computer");
+    alert("This game can be up to 5 rounds.");
 
+    let playerChoice;
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            alert(button.id);
+            playerChoice = button.id;
+        });
+    });
 
-    // ORIGINAL CODE
+    return playerChoice;
+        // ORIGINAL CODE
     // let finalScore = 0;
     // for (let i = 0; i < 5; i++) {
     //         finalScore += playRound(getPlayerChoice(), getComputerChoice());
@@ -122,39 +136,14 @@ function game() {
     //         }
     //         console.log(finalScore);
     // }
-    
-
-    // REVISITED CODE USING THE DOM AND EVENT LISTENERS
-
-    // Select div from HTML
-    const buttons = document.querySelector("#buttons");
-
-    // create buttons
-    const rockButton = document.createElement('button');
-    const paperButton = document.createElement("button");
-    const scissorsButton = document.createElement("button");
-
-    // style the buttons
-    rockButton.textContent = 'Rock';
-
-    paperButton.textContent = 'Paper';
-    scissorsButton.textContent = 'Scissors';
-
-
-    // append buttons to parent div
-    buttons.appendChild(rockButton);
-    buttons.appendChild(paperButton);
-    buttons.appendChild(scissorsButton);
-
-
-    console.log(`The final score is: ${finalScore}`);
-    if (finalScore >= 1) {
-        return console.log("Player wins!");
-    } else if (finalScore <= -1) {
-        return console.log("Computer wins!");
-    } else {
-        return console.log("Oops! Something went wrong");
-    }
+    // console.log(`The final score is: ${finalScore}`);
+    // if (finalScore >= 1) {
+    //     return console.log("Player wins!");
+    // } else if (finalScore <= -1) {
+    //     return console.log("Computer wins!");
+    // } else {
+    //     return console.log("Oops! Something went wrong");
+    // }
 }
 
 
