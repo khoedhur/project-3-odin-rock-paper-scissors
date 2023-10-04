@@ -5,24 +5,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Odin Project Rock, Paper, Scissors</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
     <script src="rps.js" defer></script>
+    <title>Odin Project Rock, Paper, Scissors</title>
+    
 </head>
 
 <body>
-    <div id="header">
+    <header class="heading">
         <h1>Rock, Paper, Scissors</h1>
         <h2>First to 5 Wins!</h2>
+    </header>
+
+    <div class="buttons">
+        <button id="rock-button">Rock</button>
+        <button id="paper-button">Paper</button>
+        <button id="scissors-button">Scissors</button>
     </div>
 
-    <div id="buttons">
-        <button id="rock-btn">Rock</button>
-        <button id="paper-btn">Paper</button>
-        <button id="scissor-btn">Scissors</button>
-    </div>
-
-    <div id="scoreboard">
-
+    <div class="result">
+        <div class="score">
+            <h3 id="player-score">Player Score: 0</h3>
+            <h3 id="computer-score">Computer Score: 0</h3>
+        </div>
     </div>
 </body>
 
