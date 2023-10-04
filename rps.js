@@ -3,7 +3,13 @@
  * The game is a best of 5 (5 rounds possible, stops if the player or computer scores 3 points)
  * The project's goal is to manipulate the DOM and use event listeners and handlers to play the game
  */
-const rock = document
+
+
+// constants
+const rock = document.getElementById('rock-btn');
+const paper = document.getElementById('paper-btn');
+const scissors = document.getElementById()
+
 
 /**
  * This function randomly selects the computer's choice
