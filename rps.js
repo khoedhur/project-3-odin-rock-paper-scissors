@@ -6,9 +6,11 @@
 
 
 // constants
-const rock = document.getElementById('rock-btn');
-const paper = document.getElementById('paper-btn');
-const scissors = document.getElementById()
+const rock = document.getElementById('rock-button');
+const paper = document.getElementById('paper-button');
+const scissors = document.getElementById('scissors-button');
+const playerScore = document.getElementById('player-score');
+const conmputerScore = document.getElementById('computer-score');
 
 
 /**
@@ -19,11 +21,6 @@ function getComputerChoice() {
     const options = ["rock", "paper", "scissors"];
     let computerChoice = options[Math.floor(Math.random() * options.length)];
     return computerChoice;
-}
-
-
-function checkTie() {
-
 }
 
 
