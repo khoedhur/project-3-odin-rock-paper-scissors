@@ -10,7 +10,7 @@ const rock = document.getElementById('rock-button');
 const paper = document.getElementById('paper-button');
 const scissors = document.getElementById('scissors-button');
 const playerScore = document.getElementById('player-score');
-const conmputerScore = document.getElementById('computer-score');
+const computerScore = document.getElementById('computer-score');
 
 
 /**
@@ -24,27 +24,44 @@ function getComputerChoice() {
 }
 
 
-function compareChoice(playerSelection, computerSelection) {
-    let player = playerSelection.toUpperCase();
-    let computer = compareChoice.toUpperCase();
+function compareChoice(playerChoice, computerChoice) {
+    let player = playerChoice.toUpperCase();
+    let computer = computerChoice.toUpperCase();
 
     
 }
 
 
-function showScore() {
+function updateScore() {
 
 }
 
 
-function playRound() {
+function playRound(playerChoice, computerChoice) {
 
 }
 
 
 function game() {
-    
+    // FLOW OF THE GAME
 
+    // 1. player clicks on button
+    rock.addEventListener('click', function() {
+
+    });
+
+    paper.addEventListener('click', function() {
+
+    });
+
+    scissors.addEventListener('click', function() {
+
+    });
+    // 2. player choice is compared with computer choice
+    // 3. result is reported back
+    // 4. score is updated
+    // 5. 1-4 is repeated until player or computer score is 5
+    // winner is reported
 }
 
 
