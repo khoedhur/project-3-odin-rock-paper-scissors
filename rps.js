@@ -11,6 +11,24 @@ const paper = document.getElementById('paper-button');
 const scissors = document.getElementById('scissors-button');
 const playerScore = document.getElementById('player-score');
 const computerScore = document.getElementById('computer-score');
+// const scoreboard = document.querySelector('#scoreboard');
+const round = document.getElementById('round-result');
+const winner = document.getElementById('winner');
+
+
+// FLOW OF THE GAME
+// 1. player clicks on button
+rock.addEventListener('click', () => {
+    playRound('rock', getComputerChoice());
+});
+
+paper.addEventListener('click', () => {
+    playRound('paper', getComputerChoice());
+});
+
+scissors.addEventListener('click', () => {
+    playRound('scissors', getComputerChoice());
+});
 
 
 /**
@@ -23,46 +41,22 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-
-function compareChoice(playerChoice, computerChoice) {
-    let player = playerChoice.toUpperCase();
-    let computer = computerChoice.toUpperCase();
-
-    
-}
-
-
-function updateScore() {
-
-}
-
-
 function playRound(playerChoice, computerChoice) {
+    
+    if (playerChoice === computerChoice) {
+        round.textContent = 'Tie!';
+        
+    }
 
+    if (playerChoice === 'rock' && computerChoice == 'scissors') {
+        round.textContent = 'Player wins!'
+    }
+    
+    // 2.  player choice is compared with computer choice
+    // 3. check if tie
+    // if one wins, return report
+// result is reported back
+// score is updated
+// 1-4 is repeated until player or computer score is 5
+// winner is reported
 }
-
-
-function game() {
-    // FLOW OF THE GAME
-
-    // 1. player clicks on button
-    rock.addEventListener('click', function() {
-
-    });
-
-    paper.addEventListener('click', function() {
-
-    });
-
-    scissors.addEventListener('click', function() {
-
-    });
-    // 2. player choice is compared with computer choice
-    // 3. result is reported back
-    // 4. score is updated
-    // 5. 1-4 is repeated until player or computer score is 5
-    // winner is reported
-}
-
-
-game();
