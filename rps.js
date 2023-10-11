@@ -9,11 +9,15 @@
 const rock = document.getElementById('rock-button');
 const paper = document.getElementById('paper-button');
 const scissors = document.getElementById('scissors-button');
-const playerScore = document.getElementById('player-score');
-const computerScore = document.getElementById('computer-score');
+const playerScoreDisplay = document.getElementById('player-score');
+const computerScoreDisplay = document.getElementById('computer-score');
 // const scoreboard = document.querySelector('#scoreboard');
 const round = document.getElementById('round-result');
 const winner = document.getElementById('winner');
+
+// keep track of score
+let playerScore = 0;
+let computerScore = 0;
 
 
 // FLOW OF THE GAME
@@ -43,17 +47,33 @@ function getComputerChoice() {
 
 function playRound(playerChoice, computerChoice) {
     
+
+
+    // 2. check if tie
     if (playerChoice === computerChoice) {
         round.textContent = 'Tie!';
         
     }
 
-    if (playerChoice === 'rock' && computerChoice == 'scissors') {
-        round.textContent = 'Player wins!'
+    // 3. determine winnter
+    if ((playerChoice === 'rock' && computerChoice === 'scissors') ||
+        (playerChoice === 'paper' && computerChoice === 'rock') ||
+        (playerChoice === 'scissors' && computerChoice === 'paper')) {
+            round.textContent = 'Player wins this round!';
+            playerScore++;
+            playerScoreDisplay.textContent = playerScore;
+    }
+
+
+    if ((computerChoice === 'rock' && playerChoice === 'scissors') ||
+        (computerChoice === 'paper' && playerChoice === 'rock') ||
+        (computerChoice === 'scissors' && playerChoice === 'paper')) {
+            round.textContent = 'Computer wins this round!';
+            computerScore++;
+            computerScoreDisplay.textContent = computerScore;
     }
     
-    // 2.  player choice is compared with computer choice
-    // 3. check if tie
+    
     // if one wins, return report
 // result is reported back
 // score is updated
