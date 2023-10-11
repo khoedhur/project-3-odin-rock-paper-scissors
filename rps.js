@@ -5,6 +5,11 @@
  */
 
 
+/**
+ * ISSUES
+ *      - GAME CAN STILL BE PLAYED AFTER THERE IS A WINNER
+ */
+
 // constants
 const rock = document.getElementById('rock-button');
 const paper = document.getElementById('paper-button');
@@ -45,38 +50,46 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+
+/**
+ * This function is called when a button is clicked
+ * It checks if the player and computer picked the same option
+ * if not, then it determines who wins and displays the winner of the round and increments the score
+ * When someone reaches 5, it announces the winner
+ */
 function playRound(playerChoice, computerChoice) {
-    
-
-
     // 2. check if tie
     if (playerChoice === computerChoice) {
         round.textContent = 'Tie!';
         
     }
 
-    // 3. determine winnter
+    // 3. determine winner of the round
     if ((playerChoice === 'rock' && computerChoice === 'scissors') ||
         (playerChoice === 'paper' && computerChoice === 'rock') ||
         (playerChoice === 'scissors' && computerChoice === 'paper')) {
             round.textContent = 'Player wins this round!';
-            playerScore++;
+            if (playerScore < 5) {
+                playerScore++;
+            }
             playerScoreDisplay.textContent = playerScore;
     }
-
-
+    
     if ((computerChoice === 'rock' && playerChoice === 'scissors') ||
         (computerChoice === 'paper' && playerChoice === 'rock') ||
         (computerChoice === 'scissors' && playerChoice === 'paper')) {
             round.textContent = 'Computer wins this round!';
-            computerScore++;
+            if (computerScore < 5) {
+                computerScore++;
+            }
             computerScoreDisplay.textContent = computerScore;
     }
     
-    
-    // if one wins, return report
-// result is reported back
-// score is updated
-// 1-4 is repeated until player or computer score is 5
-// winner is reported
+    // 4. if player or computer gets to 5 points, report winner
+    if (playerScore === 5) {
+        winner.textContent = "Player Wins!";
+    }
+    else if (computerScore === 5) {
+        winner.textContent = "Computer Wins!";
+    }
 }
