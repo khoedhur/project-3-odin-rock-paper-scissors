@@ -19,6 +19,7 @@ const computerScoreDisplay = document.getElementById('computer-score');
 // const scoreboard = document.querySelector('#scoreboard');
 const round = document.getElementById('round-result');
 const winner = document.getElementById('winner');
+const restart = document.getElementById('restart-button');
 
 // keep track of score
 let playerScore = 0;
@@ -31,13 +32,20 @@ rock.addEventListener('click', () => {
     playRound('rock', getComputerChoice());
 });
 
+
 paper.addEventListener('click', () => {
     playRound('paper', getComputerChoice());
 });
 
+
 scissors.addEventListener('click', () => {
     playRound('scissors', getComputerChoice());
 });
+
+
+restart.addEventListener('click', () => {
+    window.location.reload();
+})
 
 
 /**
