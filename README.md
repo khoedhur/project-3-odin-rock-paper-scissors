@@ -32,4 +32,7 @@ This project showcases the following skills:
     * checkout
     * merge
     * deleting branches
-
+* DOM and Events
+    * addEventListener
+    * getElementById
+    * .disabled
