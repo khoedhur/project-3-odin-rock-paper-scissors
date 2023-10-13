@@ -5,18 +5,12 @@
  */
 
 
-/**
- * ISSUES
- *      - GAME CAN STILL BE PLAYED AFTER THERE IS A WINNER
- */
-
 // constants
 const rock = document.getElementById('rock-button');
 const paper = document.getElementById('paper-button');
 const scissors = document.getElementById('scissors-button');
 const playerScoreDisplay = document.getElementById('player-score');
 const computerScoreDisplay = document.getElementById('computer-score');
-// const scoreboard = document.querySelector('#scoreboard');
 const round = document.getElementById('round-result');
 const winner = document.getElementById('winner');
 const restart = document.getElementById('restart-button');
@@ -80,6 +74,7 @@ function playRound(playerChoice, computerChoice) {
             if (playerScore < 5) {
                 playerScore++;
             }
+            // update score on webpage
             playerScoreDisplay.textContent = playerScore;
     }
     
@@ -94,10 +89,17 @@ function playRound(playerChoice, computerChoice) {
     }
     
     // 4. if player or computer gets to 5 points, report winner
+    // disables buttons when player or computer reaches 5
     if (playerScore === 5) {
         winner.textContent = "Player Wins!";
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
     }
     else if (computerScore === 5) {
         winner.textContent = "Computer Wins!";
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
     }
 }
