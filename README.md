@@ -1,4 +1,4 @@
-# The Odin Project: Rock, Paper, Scissors
+# The Odin Project 3: Rock, Paper, Scissors
 
 ## Overview
 
